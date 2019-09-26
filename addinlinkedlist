@@ -1,0 +1,64 @@
+class linkedlist_node():
+  def __init__(self,value):
+    self.value = value
+    self.next = None
+  def print_all_nodes(head):
+    curr = head
+    while curr:
+      print (curr,curr.value)
+      curr = curr.next
+def add_function(head1,head2):
+  new_head = reverse_list(head1)
+  new_head2 = reverse_list(head2)
+  fake_head= linkedlist_node(None)
+  cur_node = fake_head
+  carry = 0
+  while new_head and new_head2:
+    temp_sum = new_head.value + new_head2.value + carry
+    carry = temp_sum // 10
+    cur_node.next = linkedlist_node(temp_sum%10)
+    cur_node = cur_node.next
+    new_head = new_head.next
+    new_head2 = new_head2.next
+  while new_head:
+    temp_sum = new_head.vaule + carry
+    carry = temp_sum // 10
+    cur_node.next = linkedlist_node(temp_sum%10)
+    cur_node = cur_node.next
+    new_head = new_head.next
+  while new_head2:
+    temp_sum = new_head2.value + carry
+    carry = temp_sum // 10
+    cur_node.next = linkedlist_node(temp_sum%10)
+    cur_node = cur_node.next
+    new_head2 = new_head2.next
+  if carry > 0:
+    cur_node.next = linkedlist_node(carry)
+  return reverse_list(fake_head.next)
+
+def reverse_list(head):
+  if head is None or head.next is None:
+    return head
+  while head.next:
+    new_head = reverse_list(head.next)
+    head.next.next = head
+    head.next = None
+  return new_head
+headnode = linkedlist_node(1)
+bnode = linkedlist_node(2)
+cnode = linkedlist_node(3)
+dnode = linkedlist_node(4)
+
+newheadnode = linkedlist_node(5)
+enode = linkedlist_node(6)
+fnode = linkedlist_node(7)
+
+headnode.next = bnode
+bnode.next = cnode
+
+newheadnode.next = enode
+enode.next = fnode
+fnode.next = dnode
+
+
+add_function(headnode,newheadnode).print_all_nodes()
