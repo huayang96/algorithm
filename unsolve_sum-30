@@ -1,0 +1,49 @@
+import random
+llst = []
+for i in range(1,16):
+  llst.append(i)
+mid = 9
+llst.remove(9)
+lst = llst.copy()
+print(llst)
+
+for j in range(99999999):
+  random.seed(j)
+  lst = llst.copy()
+  s1 = random.choice(lst)
+  lst.remove(s1)
+  s2 = random.choice(lst)
+  lst.remove(s2)
+  s3 = random.choice(lst)
+  lst.remove(s3)
+  s4 = random.choice(lst)
+  lst.remove(s4)
+  s5 = random.choice(lst)
+  lst.remove(s5)
+  s6 = random.choice(lst)
+  lst.remove(s6)
+  s7 = random.choice(lst)
+  lst.remove(s7)
+  l1 = 30 - s1 -s2
+  l2 = 30 - s2- s3
+  l3 = 30 - s3- s4
+  l4 = 30 - s4- s5
+  l5 = 30 - s5- s6
+  l6 = 30 - s6- s7
+  l7 = 30 - s7- s1
+  if l1 in lst:
+   lst.remove(l1)
+  if l2 in lst:
+    lst.remove(l2)
+  if l3 in lst:
+    lst.remove(l3)
+  if l4 in lst:
+    lst.remove(l4)
+  if l5 in lst:
+    lst.remove(l5)
+  if l6 in lst:
+    lst.remove(l6)
+  if l7 in lst:
+    lst.remove(l7)
+  if len(lst) == 0:
+    print(mid)
